@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissors game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1 class="header">Let's play Rock, Paper, Scissors!</h1>
+    <br>
+    <br>
+    <br>
+    <main class="mainContainer">
+        <h3 class="rulesHeader" onclick="dropdownToggle()">Rules of the Game</h3>
+        <div class="rulesContainer">
+            <p>You will be playing against the computer.</p>
+            <p>You can choose between Rock, Paper, and Scissors.</p>
+            <p>The first one to three points wins.</p>
+            <p>Here are the rules to getting a point in the game:</p>
+            <div class="winRules">
+                <span><span class="win">Rock</span> beats Scissors</span>
+                <span><span class="win">Scissors</span> beats Paper</span>
+                <span><span class="win">Paper</span> beats Rock</span>
+            </div>
+            <p>If the player and computer choose the same option (Ex. Paper and Paper), then no one gets the point.</p>
+        </div>
+        <section class="scoresContainer">
+            <span class="player">Player Score: <span class="playerScore">0</span></span>
+            <span class="pc">Computer Score: <span class="pcScore">0</span></span>
+        </section>
+        <section class="options">
+            <div>
+                <h3>Choose an option:</h3>
+            </div>
+            <div class="buttons">
+                <button class="btn1">Rock</button>
+                <button class="btn2">Paper</button>
+                <button class="btn3">Scissors</button>
+            </div>
+        </section>
+    </main>
+   
+    <script src="script.js"></script>
+</body>
+</html>
