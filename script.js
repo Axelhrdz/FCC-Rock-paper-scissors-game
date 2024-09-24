@@ -112,10 +112,12 @@ function getWinner(){
         console.log('Player has Won!');
         winner.textContent = 'Player has won!'
         optionsContainer.style.display = 'none';
+        return;
     } else if (pcPoints===3){
         console.log('PC has won!');
         winner.textContent = 'PC has won!'
         optionsContainer.style.display = 'none';
+        return;
     }
 }
 
