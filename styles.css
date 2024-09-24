@@ -30,6 +30,7 @@ button{
 .header{
     margin-top: 2rem;
     text-align: center;
+    font-weight: 400;
 }
 .mainContainer{
     display: flex;
@@ -76,9 +77,9 @@ button{
     display: flex;
     justify-content: space-between;
 }
-.scoresContainer span{
-    /* font-size: 1.2rem; */
-}
+/* .scoresContainer span{
+    font-size: 1.2rem;
+} */
 
 /* Options Container */
 .options{
@@ -106,7 +107,7 @@ button{
 /* Media queries responsiveness */
 @media (max-width: 600px) {
     body{
-
+        padding: 0 1rem;
     }
     .active{
         height: auto;

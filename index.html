@@ -24,22 +24,23 @@
                 <span><span class="win">Scissors</span> beats Paper</span>
                 <span><span class="win">Paper</span> beats Rock</span>
             </div>
-            <p>If the player and computer choose the same option (Ex. Paper and Paper), then no one gets the point.</p>
+            <p style="color: #f1c40f">If the player and computer choose the same option (Ex. Paper and Paper), then no one gets the point.</p>
         </div>
         <section class="scoresContainer">
-            <span class="player">Player Score: <span class="playerScore">0</span></span>
-            <span class="pc">Computer Score: <span class="pcScore">0</span></span>
+            <span class="player">Player Score: <span class="playerScore"></span></span>
+            <span class="pc">Computer Score: <span class="pcScore"></span></span>
         </section>
         <section class="options">
             <div>
                 <h3>Choose an option:</h3>
             </div>
             <div class="buttons">
-                <button class="btn1">Rock</button>
-                <button class="btn2">Paper</button>
-                <button class="btn3">Scissors</button>
+                <button class="btn1" id="button1">Rock</button>
+                <button class="btn2" id="button2">Paper</button>
+                <button class="btn3" id="button3">Scissors</button>
             </div>
         </section>
+        <span id="winner"></span>
     </main>
    
     <script src="script.js"></script>
