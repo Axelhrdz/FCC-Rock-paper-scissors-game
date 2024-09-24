@@ -10,7 +10,8 @@ const optionsContainer = document.querySelector('.options');
 const playerScore = document.querySelector('.playerScore');
 const pcScore = document.querySelector('.pcScore');
 //Winner
-const winner = document.getElementById('winner');
+const winner = document.querySelector('.winner');
+const playAgainButton = document.getElementById('playAgain');
 
 const dropdownToggle = () => {
     console.log('clicking');
@@ -19,13 +20,14 @@ const dropdownToggle = () => {
 
 
 
-//Generate computer move
+
+//Generate computer move ----
 const moves = ['rock', 'paper', 'scissors'];
-let index;
 let pcMove;
+
 function pcRandomMove(){
-    index = Math.floor(Math.random() * 3);
-    console.log(index);
+     let index = Math.floor(Math.random() * 3);
+    // console.log(index);
     pcMove = moves[index];
     console.log(pcMove);
 }
@@ -34,32 +36,16 @@ function pcRandomMove(){
 
 
 
-//Player move
-function choosingBtnOne(){
-    console.log('boton1');
-}
-
-
+//Player move ----
 let playerMove;
-
-
 button1.addEventListener('click', function(e){
-    playerMove = e.target.innerText.toLowerCase();
-    console.log(playerMove);
-    pcRandomMove();
-    game();
+    game(e);
 })
 button2.addEventListener('click', function(e){
-    playerMove = e.target.innerText.toLowerCase();
-    console.log(playerMove);
-    pcRandomMove();
-    game();
+    game(e);
 })
 button3.addEventListener('click', function(e){
-    playerMove = e.target.innerText.toLowerCase();
-    console.log(playerMove);
-    pcRandomMove();
-    game();
+    game(e);
 })
 
 
@@ -67,58 +53,73 @@ let playerPoints = 0;
 let pcPoints = 0;
 playerScore.textContent = playerPoints;
 pcScore.textContent = pcPoints;
-//Game Logic
-function game(){
-    
-    if(playerMove === pcMove){
-        console.log('EMPATE');
 
-        //rock
-    } else if(playerMove === 'rock' && pcMove === 'scissors'){
-        console.log('Player Wins!')
-        playerPoints++;
-        getWinner();
-
-    } else if(pcMove === 'rock' && playerMove === 'scissors') {
-        console.log('PC Wins!')
-        pcPoints++;
-        getWinner();
-
-        //scissors
-    } else if(playerMove === 'scissors' && pcMove === 'paper') {
-        console.log('Player Wins!') 
-        playerPoints++;
-    } else if(pcMove === 'scissors' && playerMove === 'paper') {
-        console.log('PC Wins!')
-        pcPoints++;
-        getWinner();
-
-        //paper
-    } else if(playerMove === 'paper' && pcMove === 'rock'){
-        console.log('Player Wins!')
-        playerPoints++;
-    } else if(pcMove === 'paper' && playerMove === 'rock'){
-        console.log('PC Wins!')
-        pcPoints++;
-    }
-    playerScore.textContent = playerPoints;
-    pcScore.textContent = pcPoints;
-
-    // getWinner();
+function gameOver(){
+    optionsContainer.classList.toggle('hide');
+    winner.classList.toggle('hide');
+    playAgainButton.onclick = playAgain;
 }
 
-function getWinner(){
-    if(playerPoints===3){
-        console.log('Player has Won!');
-        winner.textContent = 'Player has won!'
-        optionsContainer.style.display = 'none';
-        return;
-    } else if (pcPoints===3){
-        console.log('PC has won!');
-        winner.textContent = 'PC has won!'
-        optionsContainer.style.display = 'none';
-        return;
+
+
+
+function evaluateGame(player, pc){
+    if(player === 'rock' && pc === 'scissors'){
+        console.log('Player wins!');
+        playerPoints++;
+
+        //rock
+    } else if (pc === 'rock' && player === 'scissors'){
+        console.log('PC wins!');
+        pcPoints++;
+
+
+        //scissors
+    } else if(player === 'scissors' && pc === 'paper'){
+        console.log('Player wins!');
+        playerPoints++;
+    }  else if(pc === 'scissors' && pc === 'paper'){
+        console.log('PC wins!');
+        pcPoints++;
+
+
+        //paper
+    } else if(player === 'paper' && pc === 'rock'){
+        console.log('Player wins!');
+        playerPoints++;
+    } else if(pc === 'paper' && player === 'rock'){
+        console.log('PC wins!');
+        pcPoints++;
     }
+
+    playerScore.innerText = playerPoints;
+    pcScore.innerText = pcPoints;
+
+    if(playerPoints === 3 || pcPoints === 3){
+        gameOver();
+    }
+}
+
+
+
+
+//Game Logic ----
+function game(chose){
+    playerMove = chose.target.innerText.toLowerCase();
+    console.log(playerMove);
+    pcRandomMove();
+    evaluateGame(playerMove, pcMove);
+}
+
+function playAgain(){
+    playerPoints = 0;
+    pcPoints = 0;
+
+    playerScore.innerText = playerPoints;
+    pcScore.innerText = pcPoints;
+
+    optionsContainer.classList.toggle('hide');
+    winner.classList.toggle('hide');
 }
 
 
