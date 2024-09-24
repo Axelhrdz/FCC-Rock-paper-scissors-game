@@ -48,10 +48,16 @@ button{
 }
 .rulesHeader{
     cursor: pointer;
-    background-color: gray;
+    background-color: #ecf0f1;
+    color: #6c3483;
     padding: 1rem 2rem;
     border-radius: 20px;
     text-align: center;
+    transition: 0.3s;
+}
+.rulesHeader:hover{
+    background-color: black;
+    color: greenyellow;
 }
 .rulesHeader::before{
     content: '⬇ ';
@@ -113,6 +119,9 @@ button{
 /* Game over */
 .hide{
     display: none;
+}
+.winText{
+    text-align: center;
 }
 .winner{
     text-align: center;

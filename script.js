@@ -12,6 +12,8 @@ const pcScore = document.querySelector('.pcScore');
 //Winner
 const winner = document.querySelector('.winner');
 const playAgainButton = document.getElementById('playAgain');
+const winSpan = document.getElementById('winSpan');
+
 
 const dropdownToggle = () => {
     console.log('clicking');
@@ -66,30 +68,38 @@ function gameOver(){
 function evaluateGame(player, pc){
     if(player === 'rock' && pc === 'scissors'){
         console.log('Player wins!');
+        winSpan.innerText = 'Player wins!, rock beats scissors';
         playerPoints++;
 
         //rock
     } else if (pc === 'rock' && player === 'scissors'){
         console.log('PC wins!');
+        winSpan.innerText = 'Pc wins!, rock beats scissors';
         pcPoints++;
 
 
         //scissors
     } else if(player === 'scissors' && pc === 'paper'){
         console.log('Player wins!');
+        winSpan.innerText = 'Player wins!, scissors beats paper';
         playerPoints++;
-    }  else if(pc === 'scissors' && pc === 'paper'){
+    }  else if(pc === 'scissors' && player === 'paper'){
         console.log('PC wins!');
+        winSpan.innerText = 'Pc wins!, scisors beats paper';
         pcPoints++;
 
 
         //paper
     } else if(player === 'paper' && pc === 'rock'){
         console.log('Player wins!');
+        winSpan.innerText = 'Player wins!, paper beats rock';
         playerPoints++;
     } else if(pc === 'paper' && player === 'rock'){
         console.log('PC wins!');
+        winSpan.innerText = 'Pc wins!, paper beats rock';
         pcPoints++;
+    } else {
+        winSpan.innerText = "It is a tie, both chosed same option";
     }
 
     playerScore.innerText = playerPoints;
@@ -105,6 +115,7 @@ function evaluateGame(player, pc){
 
 //Game Logic ----
 function game(chose){
+    winSpan.innerText = '';
     playerMove = chose.target.innerText.toLowerCase();
     console.log(playerMove);
     pcRandomMove();
@@ -114,6 +125,7 @@ function game(chose){
 function playAgain(){
     playerPoints = 0;
     pcPoints = 0;
+    winSpan.innerText = '';
 
     playerScore.innerText = playerPoints;
     pcScore.innerText = pcPoints;
